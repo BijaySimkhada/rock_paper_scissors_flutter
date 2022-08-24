@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:game_dev/Model/ComputerChoiceModel.dart';
 
@@ -86,6 +87,22 @@ class _MainScreenState extends State<MainScreen> {
         player_score++;
       });
     }
+    showCupertinoDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: const Text('Rock Paper Scissors'),
+            content: Text(_result),
+            actions: [
+              CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Ok'))
+            ],
+          );
+        },
+        barrierDismissible: true);
   }
 
   @override
@@ -195,23 +212,27 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
             ),
-            Text(
-              _result,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            const Icon(
-              Icons.safety_divider,
-            ),
-            const Text(
-              'Scores',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  child: const Icon(
+                    Icons.computer_outlined,
+                  ),
+                ),
+                Container(
+                  child: const Icon(
+                    Icons.person,
+                  ),
+                )
+              ],
             ),
             const Divider(
               height: 10,
               color: Colors.black54,
             ),
             _start == true
-                ? Container(
+                ? SizedBox(
                     height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
