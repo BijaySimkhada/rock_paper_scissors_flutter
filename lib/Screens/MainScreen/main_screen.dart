@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
           height: 100,
         )),
     ComputerChoiceModel(
-        'Rock',
+        'Paper',
         Image.asset(
           'assets/images/paper.png',
           width: 100,
